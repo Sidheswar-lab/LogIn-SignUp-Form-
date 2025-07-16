@@ -1,6 +1,12 @@
 import React from 'react'
 import { GoogleLogin } from '@react-oauth/google'
 import { Link } from 'react-router'
+import GitHubLogin from 'react-github-login';
+
+
+
+const GITHUB_CLIENT_ID = 'Ov23liqtbnrd5YQeCtMb';
+const GITHUB_CLIENT_SECRET = '89af32eb4e84d6f13a596eb8771484d4d122d406'
 
 export const Signup = () => {
   return (
@@ -34,10 +40,16 @@ export const Signup = () => {
                   <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                   <input type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-white focus:border-white block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" />
                 </div>
-                <button type="submit" className="w-full text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-800 dark:focus:ring-green-300">Sign up</button>
+                <button type="submit" className="w-full text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-800 dark:focus:ring-green-300 cursor-pointer">Sign up</button>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">Sign up using following</p>
                 <GoogleLogin 
                 onSuccess={(response)=>console.log(response)}
+                />
+                <GitHubLogin 
+                className="w-full text-black bg-white font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer"
+                clientId = {GITHUB_CLIENT_ID}
+                onSuccess={(response)=>console.log(response)}
+                buttonText="Sign in with GitHub"
                 />
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Already have an account?
